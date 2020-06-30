@@ -38,6 +38,7 @@ public class SafetyNetResponse {
     private boolean ctsProfileMatch;
     private boolean basicIntegrity;
     private String advice;
+    private String evaluationType;
 
     //forces the parse()
     private SafetyNetResponse() {
@@ -111,6 +112,15 @@ public class SafetyNetResponse {
     }
 
     /**
+     * What SafetyNet used backend hardware or basic
+     *
+     * @return
+     */
+    public String getEvaluationType() {
+        return evaluationType;
+    }
+
+    /**
      * Parse the JSON string into populated SafetyNetResponse object
      *
      * @param decodedJWTPayload JSON String (always a json string according to JWT spec)
@@ -163,6 +173,10 @@ public class SafetyNetResponse {
                 response.advice = root.getString("advice");
             }
 
+            if (root.has("evaluationType")) {
+                response.evaluationType = root.getString("evaluationType");
+            }
+
             return response;
         } catch (JSONException e) {
             Log.e(TAG, "problem parsing decodedJWTPayload:" + e.getMessage(), e);
@@ -182,6 +196,7 @@ public class SafetyNetResponse {
                 ", ctsProfileMatch=" + ctsProfileMatch +
                 ", basicIntegrity=" + basicIntegrity +
                 ", advice=" + advice +
+                ", evaluationType=" + evaluationType +
                 '}';
     }
 
