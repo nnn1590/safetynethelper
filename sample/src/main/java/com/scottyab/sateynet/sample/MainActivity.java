@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void success(boolean ctsProfileMatch, boolean basicIntegrity) {
-                Log.d(TAG, "SafetyNet req success: ctsProfileMatch:" + ctsProfileMatch + " and basicIntegrity, " + basicIntegrity);
+            public void success(boolean ctsProfileMatch, boolean basicIntegrity, String advice, String evaluationType) {
+                Log.d(TAG, "SafetyNet req success: ctsProfileMatch:" + ctsProfileMatch + " and basicIntegrity, " + basicIntegrity + " and advice, " + advice + "and evaluationType, " + evaluationType);
                 showLoading(false);
                 updateUIWithSuccessfulResult(safetyNetHelper.getLastResponse());
             }
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUIWithSuccessfulResult(SafetyNetResponse safetyNetResponse) {
-        resultsTV.setText(getString(R.string.safety_results, safetyNetResponse.isCtsProfileMatch(), safetyNetResponse.isBasicIntegrity()));
+        resultsTV.setText(getString(R.string.safety_results, safetyNetResponse.isCtsProfileMatch(), safetyNetResponse.isBasicIntegrity(),safetyNetResponse.getAdvice(),safetyNetResponse.getEvaluationType()));
         resultNoteTV.setText(R.string.safety_results_note);
 
         successResultsContainer.setVisibility(View.VISIBLE);
