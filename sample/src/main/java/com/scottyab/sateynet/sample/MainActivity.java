@@ -3,9 +3,11 @@ package com.scottyab.sateynet.sample;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -190,9 +192,13 @@ public class MainActivity extends AppCompatActivity {
         timestampTV.setText(sim.format(timeOfResponse));
         packageNameTV.setText(safetyNetResponse.getApkPackageName());
 
-        resultsIcon.setImageResource(safetyNetResponse.isCtsProfileMatch() ? R.drawable.pass : R.drawable.fail);
+        resultsIcon.setImageResource(R.drawable.pass);
 
-        revealResults(ContextCompat.getColor(this, safetyNetResponse.isCtsProfileMatch() ? R.color.pass : R.color.fail));
+        revealResults(ContextCompat.getColor(this, R.color.pass));
+
+        if (safetyNetResponse.isCtsProfileMatch() ){
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://dic.nicovideo.jp/a/%E3%83%87%E3%83%87%E3%83%89%E3%83%B3%21%28%E7%B5%B6%E6%9C%9B%29")));
+        }
     }
 
     @Override
