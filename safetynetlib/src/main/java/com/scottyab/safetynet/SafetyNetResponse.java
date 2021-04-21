@@ -195,7 +195,7 @@ public class SafetyNetResponse {
                 ", ctsProfileMatch=" + ctsProfileMatch +
                 ", basicIntegrity=" + basicIntegrity +
                 ", advice=" + advice +
-                ", evaluationType=" + evaluationType +
+                ", evaluationType='" + evaluationType + '\'' +
                 '}';
     }
 
