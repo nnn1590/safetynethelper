@@ -112,7 +112,8 @@ public class SafetyNetResponse {
     }
 
     /**
-     * What SafetyNet used backend hardware or basic
+     * Evaluation type used by SafetyNet
+     * For example, basic-only or basic + hardware backend
      *
      * @return
      */
