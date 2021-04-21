@@ -111,7 +111,7 @@ public class SafetyNetResponse {
 
     /**
      * Evaluation type used by SafetyNet
-     * For example, basic-only("BASIC") or basic + hardware backend("BASIC, HARDWARE_BACKED")
+     * For example, basic-only("BASIC") or basic + hardware("BASIC, HARDWARE_BACKED")
      *
      * @return
      */
