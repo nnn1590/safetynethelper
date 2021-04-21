@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void success(boolean ctsProfileMatch, boolean basicIntegrity, String advice, String evaluationType) {
-                Log.d(TAG, "SafetyNet req success: ctsProfileMatch:" + ctsProfileMatch + " and basicIntegrity, " + basicIntegrity + " and advice, " + advice + "and evaluationType, " + evaluationType);
+            public void success(boolean ctsProfileMatch, boolean basicIntegrity) {
+                Log.d(TAG, "SafetyNet req success: ctsProfileMatch:" + ctsProfileMatch + " and basicIntegrity, " + basicIntegrity);
                 showLoading(false);
                 updateUIWithSuccessfulResult(safetyNetHelper.getLastResponse());
             }

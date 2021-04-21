@@ -80,7 +80,7 @@ public class SafetyNetHelper {
     public interface SafetyNetWrapperCallback {
         void error(int errorCode, String errorMessage);
 
-        void success(boolean ctsProfileMatch, boolean basicIntegrity, String advice, String evaluationType);
+        void success(boolean ctsProfileMatch, boolean basicIntegrity);
     }
 
     /**
@@ -113,7 +113,7 @@ public class SafetyNetHelper {
 
                         //only need to validate the response if it says we pass
                         if (!response.isCtsProfileMatch() || !response.isBasicIntegrity()) {
-                            callback.success(response.isCtsProfileMatch(), response.isBasicIntegrity(), response.getAdvice(),response.getEvaluationType());
+                            callback.success(response.isCtsProfileMatch(), response.isBasicIntegrity());
                             return;
                         } else {
                             //validate payload of the response
@@ -130,7 +130,7 @@ public class SafetyNetHelper {
                                         @Override
                                         public void success(boolean isValidSignature) {
                                             if (isValidSignature) {
-                                                callback.success(response.isCtsProfileMatch(), response.isBasicIntegrity(), response.getAdvice(),response.getEvaluationType());
+                                                callback.success(response.isCtsProfileMatch(), response.isBasicIntegrity());
                                             } else {
                                                 callback.error(RESPONSE_FAILED_SIGNATURE_VALIDATION, "Response signature invalid");
 
